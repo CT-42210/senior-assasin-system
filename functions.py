@@ -29,9 +29,19 @@ def login():
 def teams():
     with open(usernames_file, 'r') as a:
         line_number = data.find_string_line(a, username)
-        with open(team_id_file, 'r') as f:
-            team_id_line = data.read_string_line(f, line_number)
-            if team_id_line == '':
+        print(line_number)
+        if line_number is not False:
+            with open(team_id_file, 'r') as f:
+                team_id_line = data.read_string_line(f, line_number)
+                print(team_id_line)
+                if team_id_line != '':
+                    try:
+                        with open(team_name_file, 'r') as d:
+                            team_name_line = data.read_string_line(d, (int(team_id_line)-1))
+                            print(team_name_line)
+                    except ValueError:
+                        print("ValueError")
+
 
 
 
