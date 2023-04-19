@@ -24,3 +24,7 @@ def read_string_line(input, line_number):
     for i in range(line_number):
         input.readline()
     return input.readline().rstrip()
+
+
+def edit_string_line(input, line_number):
+
