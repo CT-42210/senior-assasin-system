@@ -2,8 +2,8 @@
 
 import data
 
-usernames_file = 'data/usrnms.bruh'
-passwords_file = 'data/pswds.bruh'
+usernames_file = 'data/usernames.bruh'
+passwords_file = 'data/passwords.bruh'
 team_id_file = 'data/team_ids.bruh'
 team_name_file = 'data/team_names.bruh'
 
@@ -37,12 +37,10 @@ def teams():
                 if team_id_line != '':
                     try:
                         with open(team_name_file, 'r') as d:
-                            team_name_line = data.read_string_line(d, (int(team_id_line)-1))
+                            team_name_line = data.read_string_line(d, (int(team_id_line) - 1))
                             print(team_name_line)
                     except ValueError:
                         print("ValueError")
-
-
 
 
 teams()
