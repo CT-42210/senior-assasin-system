@@ -44,3 +44,4 @@ def append_string_line(input, new_string):
     input.seek(0)
     input.writelines(content)
 
+def last_line_finder():

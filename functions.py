@@ -5,11 +5,11 @@ import data
 username = input("USERNAME: \n -$")
 password = input("PASSWORD: \n -$")
 
-username_file = open('data/usernames.bruh', 'r+')
-password_file = open('data/passwords.bruh', 'r+')
-team_id_file = open('data/team_ids.bruh', 'r+')
-team_names_file = open('data/team_names.bruh', 'r+')
-team_targets_file = open('data/team_targets.bruh', 'r+')
+username_file = open('data/usernames.not.a.database.file', 'r+')
+password_file = open('data/passwords.not.a.database.file', 'r+')
+team_id_file = open('data/team_ids.not.a.database.file', 'r+')
+team_names_file = open('data/team_names.not.a.database.file', 'r+')
+team_targets_file = open('data/team_targets.not.a.database.file', 'r+')
 
 
 def login():
@@ -72,9 +72,16 @@ def account_creator():
 
 
 def team_creater():
-    new_team_name = input("Enter the new teams name:")
+    new_team_name = input("Enter the new teams name:\n -$")
+    first_team_member = input("Enter the First Members User ID:\n -$")
+    second_team_member = input("Enter the Second Members User ID:\n -$")
 
-    data.append_string_line(team_names_file)
+
+
+    if data.read_string_line(team_id_file, int(first_team_member)) == '0':
+        if data.read_string_line(team_id_file, int(second_team_member)) == '0':
+            data.edit_string_line(team_id_file, int(first_team_member), )
+
 
 username_file.close()
 password_file.close()
