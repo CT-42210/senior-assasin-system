@@ -5,11 +5,11 @@ import data
 username = input("USERNAME: \n -$")
 password = input("PASSWORD: \n -$")
 
-username_file = open('data/usernames.bruh', 'r')
-password_file = open('data/passwords.bruh', 'r')
-team_id_file = open('data/team_ids.bruh', 'r')
-team_names_file = open('data/team_names.bruh', 'r')
-team_targets_file = open('data/team_targets.bruh', 'r')
+username_file = open('data/usernames.bruh', 'r+')
+password_file = open('data/passwords.bruh', 'r+')
+team_id_file = open('data/team_ids.bruh', 'r+')
+team_names_file = open('data/team_names.bruh', 'r+')
+team_targets_file = open('data/team_targets.bruh', 'r+')
 
 
 def login():
@@ -59,7 +59,22 @@ def account_creator():
     new_username = input("What do you want your username to be? \n(No spaces please)\n -$")
     new_password = input("What do you want your username to be? \n(No spaces please)\n -$")
 
+    new_team_id = '0'
 
+    if data.find_string(username_file, new_username) is False:
+        data.append_string_line(username_file, new_username)
+        data.append_string_line(password_file, new_password)
+        data.append_string_line(team_id_file, new_team_id)
+
+        print(f"user created.\nUsername: {new_username}\nPassword: {new_password}\nTeam: Unassigned")
+    else:
+        print("error")
+
+
+def team_creater():
+    new_team_name = input("Enter the new teams name:")
+
+    data.append_string_line(team_names_file)
 
 username_file.close()
 password_file.close()

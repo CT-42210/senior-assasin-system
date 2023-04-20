@@ -4,6 +4,7 @@ import re
 
 
 def find_string(input, search_string):
+    input.seek(0)
     for line in input:
         line = line.rstrip()
         if re.search(r"\b{}\b".format(search_string), line):
@@ -12,6 +13,7 @@ def find_string(input, search_string):
 
 
 def find_string_line(input, search_string):
+    input.seek(0)
     for number, line in enumerate(input):
         line = line.rstrip()
         if re.search(r"\b{}\b".format(search_string), line):
@@ -26,5 +28,19 @@ def read_string_line(input, line_number):
     return input.readline().rstrip()
 
 
-def edit_string_line(input, line_number):
+def edit_string_line(input, line_number, new_string):
+    input.seek(0)
+    content = input.readlines()
+    content[line_number] = new_string + "\n"
+    input.seek(0)
+    input.writelines(content)
+
+
+def append_string_line(input, new_string):
+    input.seek(0)
+    string_format = new_string + '\n'
+    content = input.readlines()
+    content.append(string_format)
+    input.seek(0)
+    input.writelines(content)
 
