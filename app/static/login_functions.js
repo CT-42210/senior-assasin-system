@@ -1,20 +1,18 @@
 function sendData() {
-	if (document.getElementById("move_data").value.length == 0) {
-		console.log("No moves to send!");
+	if (document.getElementById("username").value.length == 0) {
+		console.log("No username!");
 		return;
 	} else {
 	      $.ajax({
         type: "POST",
-        url: "/update_board",
-        data: { text: $("#move_data").val() },
+        url: "/login_check",
+        data: { text: $("#username").val() },
         success: function(response) {
         		console.log("submitting to python snake");
-        		 $("#silentDiv").html(response)
-        		 init();
         }
       });
 		console.log("submitting to python");
-		document.getElementById("move_data").value = "";
+		document.getElementById("username").value = "";
 	}
 
 }

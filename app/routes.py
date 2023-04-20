@@ -13,3 +13,12 @@ def index():
 @app.route('/login')
 def login():
     return render_template("login.html")
+
+
+@app.route("/login_check", methods=["POST"])
+def login_check():
+
+    username = request.form.get("text")
+
+    print(username)
+    return username
