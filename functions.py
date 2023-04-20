@@ -81,7 +81,8 @@ def team_creater():
     if data.read_string_line(team_id_file, int(first_team_member)) == '0':
         if data.read_string_line(team_id_file, int(second_team_member)) == '0':
             verification = input(f"creating new team\nTeam Name: {new_team_name}\n"
-                                 f"members: {data.read_string_line(username_file, first_team_member)}\n"
+                                 f"members: {data.read_string_line(username_file, int(first_team_member))}, "
+                                 f"{data.read_string_line(username_file, int(first_team_member))}\n"
                                  f"Targets: Undefined\n"
                                  f"Are you sure? [Y, n]\n -$")
             if verification == 'y' or 'Y':
@@ -91,6 +92,7 @@ def team_creater():
                 data.append_string_line(team_names_file, new_team_name)
                 data.append_string_line(team_targets_file, '0')
 
+team_creater()
 
 username_file.close()
 password_file.close()
