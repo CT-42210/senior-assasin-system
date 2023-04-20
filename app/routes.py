@@ -13,7 +13,7 @@ def index():
 
 
 # /login page
-#   if user already has an ccount they can log in here
+#   if user already has an account they can log in here
 @app.route('/login')
 def login():
     return render_template("login.html")
@@ -35,3 +35,18 @@ def login_check():
 
 # /signup
 #   sign-up page for a user
+@app.route("/signup", methods=["GET"])
+def sign_up():
+    return render_template("signup.html")
+
+
+# /signup_check
+#   creates a new USER --> gets put into database (AKA ".not.a.database.file" files)
+#       Will verify that no other user's have the same username
+@app.route("/signup_check", methods=["POST"])
+def signup_check():
+
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    return username

@@ -5,11 +5,11 @@ function sendData() {
 	} else {
 	      $.ajax({
         type: "POST",
-        url: "/login_check",
+        url: "/signup_check",
         data: { username: $("#username").val(),
                 password: $("#password").val() },
         success: function(response) {
-        		console.log("Success username: " + response);
+        		console.log("Submitted to python response: " + response);
         }
       });
 		document.getElementById("username").value = "";
