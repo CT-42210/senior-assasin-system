@@ -76,11 +76,20 @@ def team_creater():
     first_team_member = input("Enter the First Members User ID:\n -$")
     second_team_member = input("Enter the Second Members User ID:\n -$")
 
-
+    new_team_id = data.last_line_finder(team_names_file)
 
     if data.read_string_line(team_id_file, int(first_team_member)) == '0':
         if data.read_string_line(team_id_file, int(second_team_member)) == '0':
-            data.edit_string_line(team_id_file, int(first_team_member), )
+            verification = input(f"creating new team\nTeam Name: {new_team_name}\n"
+                                 f"members: {data.read_string_line(username_file, first_team_member)}\n"
+                                 f"Targets: Undefined\n"
+                                 f"Are you sure? [Y, n]\n -$")
+            if verification == 'y' or 'Y':
+
+                data.edit_string_line(team_id_file, int(first_team_member), new_team_id)
+                data.edit_string_line(team_id_file, int(second_team_member), new_team_id)
+                data.append_string_line(team_names_file, new_team_name)
+                data.append_string_line(team_targets_file, '0')
 
 
 username_file.close()
