@@ -70,7 +70,11 @@ def account_creator():
     else:
         print("error")
 
-account_creator()
+
+def team_creater():
+    new_team_name = input("Enter the new teams name:")
+
+    data.append_string_line(team_names_file)
 
 username_file.close()
 password_file.close()
