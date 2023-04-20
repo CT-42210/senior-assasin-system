@@ -1,8 +1,9 @@
-from flask import render_template, request
+from flask import render_template, request, session
 from app import app
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('base.html')
+    session['username'] = "username"
+    return render_template('index.html')
