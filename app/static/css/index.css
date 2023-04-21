@@ -1,0 +1,37 @@
+body {
+  background: linear-gradient(to bottom, #87CEFA, white);
+  background-attachment: fixed;
+}
+
+@media only screen and (max-width: 980px) {
+  /* Change the layout of the page for smaller screens */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Adjust the width of the main content area */
+  main {
+    width: 100%;
+    padding: 10;
+  }
+
+  /* Adjust font sizes and margins */
+  h1 {
+    font-size: 100px;
+    margin-top: 0 px;
+  }
+
+  a {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  div {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+}
