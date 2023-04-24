@@ -45,8 +45,9 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #87CEFA, white);
-  background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(to bottom, #87CEFA, white);
+    background-attachment: fixed;
 
 }
 
