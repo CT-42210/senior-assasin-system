@@ -36,9 +36,8 @@ def login_check():
     print(username)
     print(password)
 
-    test.login(username, password)
-
-    return username
+    if test.login(username, password) is True:
+        return username
 
 
 # /signup

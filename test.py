@@ -19,8 +19,10 @@ def login(username, password):
     password_line = data.read_string_line(password_file, line_number)
     if password_line == password:
         print("Logged in.")
+        return True
     else:
         print("Incorrect password.")
+        return False
 
 
 def teams(username, password):
