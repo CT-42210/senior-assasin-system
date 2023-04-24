@@ -37,6 +37,7 @@ def login_check():
     print(password)
 
     if test.login(username, password) is True:
+        session['team_name'] = test.teams(username)
         return username
 
 

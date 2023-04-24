@@ -25,21 +25,19 @@ def login(username, password):
         return False
 
 
-def teams(username, password):
+def teams(username):
     line_number = data.find_string_line(username_file, username)
-    print(line_number)
     if line_number is not False:
         team_id_line = data.read_string_line(team_id_file, line_number)
-        print(team_id_line)
         if team_id_line != '':
             try:
                 team_name_line = data.read_string_line(team_names_file, (int(team_id_line) - 1))
-                print(team_name_line)
+                return team_name_line
             except ValueError:
                 print("ValueError")
 
 
-def targets(username, password):
+def targets(username):
     line_number = data.find_string_line(username_file, username)
     print(line_number)
     if line_number is not False:
