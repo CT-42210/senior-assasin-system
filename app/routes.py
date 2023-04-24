@@ -16,8 +16,11 @@ def index():
 
 # /login page
 #   if user already has an account they can log in here
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
+    # if request.method == "POST":
+    #     username = request.form.get("username")
+    #     print(username)
     return render_template("login.html")
 
 
@@ -53,5 +56,6 @@ def signup_check():
 
     username = request.form.get("username")
     password = request.form.get("password")
+    email = request.form.get("email")
 
     return username

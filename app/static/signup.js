@@ -7,6 +7,7 @@ function sendData() {
         type: "POST",
         url: "/signup_check",
         data: { username: $("#username").val(),
+                email: $("#email").val(),
                 password: $("#password").val() },
         success: function(response) {
         		console.log("Submitted to python response: " + response);
@@ -14,6 +15,7 @@ function sendData() {
       });
 		document.getElementById("username").value = "";
 		document.getElementById("password").value = "";
+		document.getElementById("email").value = "";
 	}
 
 }
