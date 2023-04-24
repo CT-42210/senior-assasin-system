@@ -1,5 +1,7 @@
 from flask import render_template, request, session
 from app import app
+import test
+
 
 
 # / | /index
@@ -30,6 +32,9 @@ def login_check():
 
     print(username)
     print(password)
+
+    test.login(username, password)
+
     return username
 
 
