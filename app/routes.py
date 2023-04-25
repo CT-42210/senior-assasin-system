@@ -38,6 +38,10 @@ def login_check():
 
     if test.login(username, password) is True:
         session['team_name'] = test.teams(username)
+        target_list = test.targets(username)
+        session['target_team_name'] = target_list[0]
+        session['target_user_name_1'] = target_list[1]
+        session['target_user_name_2'] = target_list[2]
 
         return username
     return username

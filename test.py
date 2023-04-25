@@ -16,7 +16,7 @@ def login(username, password):
         print("Username not found.")
         return
     username_file.seek(0)
-    password_line = data.read_string_line(password_file, line_number)
+    password_line = data.read_string_line(password_file, line_number[0])
     if password_line == password:
         print("Logged in.")
         return True
@@ -28,7 +28,7 @@ def login(username, password):
 def teams(username):
     line_number = data.find_string_line(username_file, username)
     if line_number is not False:
-        team_id_line = data.read_string_line(team_id_file, line_number)
+        team_id_line = data.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
             try:
                 team_name_line = data.read_string_line(team_names_file, (int(team_id_line) - 1))
@@ -38,17 +38,25 @@ def teams(username):
 
 
 def targets(username):
+    return_list = []
     line_number = data.find_string_line(username_file, username)
-    print(line_number)
     if line_number is not False:
-        team_id_line = data.read_string_line(team_id_file, line_number)
-        print(team_id_line)
+        team_id_line = data.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
             try:
                 team_target_line = data.read_string_line(team_targets_file, (int(team_id_line) - 1))
-                print(team_target_line)
                 target_name_line = data.read_string_line(team_names_file, (int(team_target_line) - 1))
-                print(f"your ops are team {team_target_line}. they are called {target_name_line}")
+                return_list.append(target_name_line)
+                opponent_user_ids = data.find_string_line(team_id_file, team_target_line)
+
+                if opponent_user_ids is not False:
+                    first_opponent = data.read_string_line(username_file, opponent_user_ids[0])
+                    second_opponent = data.read_string_line(username_file, opponent_user_ids[1])
+
+                    return_list.append(first_opponent)
+                    return_list.append(second_opponent)
+
+                    return return_list
             except ValueError:
                 print("ValueError")
 

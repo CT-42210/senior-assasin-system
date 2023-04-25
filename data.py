@@ -14,11 +14,12 @@ def find_string(input, search_string):
 
 def find_string_line(input, search_string):
     input.seek(0)
+    result = []
     for number, line in enumerate(input):
         line = line.rstrip()
         if re.search(r"\b{}\b".format(search_string), line):
-            return number
-    return False
+            result.append(number)
+    return result if result else False
 
 
 def read_string_line(input, line_number):
