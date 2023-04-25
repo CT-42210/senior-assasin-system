@@ -1,4 +1,4 @@
-from flask import render_template, request, session
+from flask import render_template, request, session, redirect, url_for
 from app import app
 import test
 
@@ -65,3 +65,9 @@ def signup_check():
     email = request.form.get("email")
 
     return username
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
