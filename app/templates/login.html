@@ -6,16 +6,17 @@
     <link rel="stylesheet" href="/static/css/login.css">
 
     <h1>Welcome to Login!</h1>
-
+    <div class="login_div">
     <form id="login-form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" placeholder="Enter Username"><br>
+      <label for="username" >Username:</label>
+      <input class="login_username" type="text" id="username" name="username" placeholder="Enter Username"><br>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Enter Password"><br>
+      <label for="password" >Password:</label>
+      <input class="login_password" type="password" id="password" name="password" placeholder="Enter Password"><br>
 
-      <button type="button" onclick="sendData()">Log in</button>
+      <button type="button" onclick="sendData()" class="login_submit">Log in</button>
     </form>
+    </div>
 
 
 {% endblock %}
