@@ -32,19 +32,23 @@ def login_check():
     username = request.form.get("username")
     password = request.form.get("password")
     session['username'] = username
+    session['login'] = "False"
 
     print(username)
     print(password)
 
     if test.login(username, password) is True:
+        session['login'] = "True"
         session['team_name'] = test.teams(username)
         target_list = test.targets(username)
         session['target_team_name'] = target_list[0]
         session['target_user_name_1'] = target_list[1]
         session['target_user_name_2'] = target_list[2]
 
-        return username
-    return username
+        return redirect(url_for('index'))
+    else:
+        session['login'] = "Error"
+    return redirect(url_for('index'))
 
 
 # /signup
@@ -64,7 +68,7 @@ def signup_check():
     password = request.form.get("password")
     email = request.form.get("email")
 
-    return username
+    return redirect(url_for('index'))
 
 
 # /logout
