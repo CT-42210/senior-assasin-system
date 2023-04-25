@@ -67,6 +67,8 @@ def signup_check():
     return username
 
 
+# /logout
+#   clears all session data from user, seemingly logging them out
 @app.route('/logout')
 def logout():
     session.clear()
