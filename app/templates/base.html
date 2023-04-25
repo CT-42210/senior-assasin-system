@@ -4,7 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <link rel="icon" href="/static/images/web_icon.png" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='images/web_icon.png') }}" type="image/png">
     {% if title %}
     <title>{{ title }} - Assasins</title>
     {% else %}
