@@ -2,6 +2,7 @@
 
 {% block content %}
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
 
 
     {% if 'True' in session['login'] %}
@@ -9,9 +10,6 @@
         <h2>Your team name is {{ session['team_name'] }}</h2>
         <h3>You are hunting Team {{ session['target_team_name'] }}</h3>
         <body>Members: {{ session['target_user_name_1'] }} and {{ session['target_user_name_2'] }} </body>
-    {% elif 'Error' in session['login'] %}
-      <h1>Welcome!</h1>
-      <p>ERROR: Username or Password incorrect.</p>
     {% else %}
       <h1>Welcome!</h1>
       <p>Please sign in to access your account.</p>
