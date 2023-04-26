@@ -1,13 +1,13 @@
 function sendData() {
-	if (document.getElementById("username").value.length === 0 || document.getElementById("password").value.length === 0) {
+	if (document.getElementById("username_input").value.length === 0 || document.getElementById("password_input").value.length === 0) {
 		console.log("ERROR! no password or username");
 		return;
 	} else {
 	      $.ajax({
         type: "POST",
         url: "/login",
-        data: { username: $("#username").val(),
-                password: $("#password").val() },
+        data: { username: $("#username_input").val(),
+                password: $("#password_input").val() },
         success: function(response) {
         		console.log("Success username: " + response);
         		if (response == "False") {
@@ -22,8 +22,8 @@ function sendData() {
 
         }
       });
-		document.getElementById("username").value = "";
-		document.getElementById("password").value = "";
+		document.getElementById("username_input").value = "";
+		document.getElementById("password_input").value = "";
 	}
 
 }
