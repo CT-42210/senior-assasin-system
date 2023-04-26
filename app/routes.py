@@ -40,13 +40,13 @@ def login():
         else:
             return "False"
 
-    return render_template("login_bootstrap.html")
+    return render_template("login.html")
 
 # /signup
 #   sign-up page for a user
 @app.route("/signup", methods=["GET"])
 def sign_up():
-    return render_template("signup.html")
+    return render_template("signup_bootstrap.html")
 
 
 # /signup_check

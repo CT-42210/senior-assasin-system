@@ -31,29 +31,27 @@
                 </div>
 
                 <form>
-                  <p>Please login to your account</p>
+                  <p>Sign up!</p>
+
+                  <div class="form-outline mb-4">
+                    <input type="email" id="email_input" class="form-control" placeholder="email"/>
+                    <label class="form-label" for="email_input">Email</label>
+                  </div>
 
                   <div class="form-outline mb-4">
                     <input type="text" id="username_input" class="form-control"
-                      placeholder="Phone number or email address" />
+                      placeholder="username" />
                     <label class="form-label" for="username_input">Username</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="password_input" class="form-control" />
+                    <input type="password" id="password_input" class="form-control" placeholder="password"/>
                     <label class="form-label" for="password_input">Password</label>
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" onclick="sendData()" type="button">Log
-                      in</button>
-                    <a class="text-muted" href="#!">Forgot password?</a>
-                  </div>
-
-                  <div class="d-flex align-items-center justify-content-center pb-4">
-                    <p class="mb-0 me-2">Don't have an account?</p>
-                    <button type="button" class="btn btn-outline-danger" onclick = "window.location.href='/signup';"
->Create new</button>
+                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" onclick="sendData()" type="button">Sign
+                      up</button>
                   </div>
 
                 </form>
