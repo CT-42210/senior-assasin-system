@@ -40,7 +40,7 @@ def login():
         else:
             return "False"
 
-    return render_template("login.html")
+    return render_template("login_bootstrap.html")
 
 # /signup
 #   sign-up page for a user
