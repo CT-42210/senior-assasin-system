@@ -20,3 +20,8 @@ border-top-right-radius: .3rem;
 border-bottom-right-radius: .3rem;
 }
 }
+
+.border_thing {
+    padding-top: 1rem!important;
+    padding-bottom: 3rem!important;
+}
