@@ -12,7 +12,16 @@
     {% endif %}
 </head>
 <body>
-<div style="color: white;" >
+
+ {% if 'True' in session['login'] %}
+  <div style="color: white;" >
+    Assasins-Web:
+    <a href="/index">Home</a>
+    <a href="/logout">Log Out</a>
+</div>
+<hr>
+    {% else %}
+ <div style="color: white;" >
     Assasins-Web:
     <a href="/index">Home</a>
     <a href="/login">Login</a>
@@ -20,6 +29,9 @@
     <a href="/logout">Log Out</a>
 </div>
 <hr>
+    {% endif %}
+
+
 {% block content %}{% endblock %}
 </body>
 </html>

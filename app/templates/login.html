@@ -2,6 +2,10 @@
 
 {% block content %}
 
+{% if 'True' in session['login'] %}
+    <script>window.location.href = "/"</script>
+{% else %}
+
 <script src="{{url_for('static', filename='login_functions.js')}}"></script>
 <script src="{{url_for('static', filename='JQ.js')}}"></script>
 
@@ -74,5 +78,7 @@
     </div>
   </div>
 </section>
+
+{% endif %}
 
 {% endblock %}
