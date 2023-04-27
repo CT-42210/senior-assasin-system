@@ -21,7 +21,22 @@ border-bottom-right-radius: .3rem;
 }
 }
 
-.border_thing {
-    padding-top: 1rem!important;
+.border_replacement {
     padding-bottom: 3rem!important;
+}
+
+.card_replacement {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    /* border: 1px solid rgba(0,0,0,.125); */
+    border-radius: 0.25rem;
+}
+
+.rounded-5-replacement {
+    border-radius: 0.3rem!important;
 }
