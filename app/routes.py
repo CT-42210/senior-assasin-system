@@ -2,6 +2,15 @@ from flask import render_template, request, session, redirect, url_for, flash
 from app import app
 import test
 
+def load_data(username):
+    session['login'] = "True"
+    session['team_name'] = test.teams(username)
+    target_list = test.targets(username)
+    session['target_team_name'] = target_list[0]
+    session['target_user_name_1'] = target_list[1]
+    session['target_user_name_2'] = target_list[2]
+    session['teammate_health'] = "Alive"
+    session['teammate_name'] = "test"
 
 
 # / | /index
@@ -29,12 +38,7 @@ def login():
         print(password)
 
         if test.login(username, password) is True:
-            session['login'] = "True"
-            session['team_name'] = test.teams(username)
-            target_list = test.targets(username)
-            session['target_team_name'] = target_list[0]
-            session['target_user_name_1'] = target_list[1]
-            session['target_user_name_2'] = target_list[2]
+            load_data(username)
 
             return "True"
         else:
