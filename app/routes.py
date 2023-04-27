@@ -44,22 +44,17 @@ def login():
 
 # /signup
 #   sign-up page for a user
-@app.route("/signup", methods=["GET"])
+@app.route("/signup", methods=["GET", "POST"])
 def sign_up():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        email = request.form.get("email")
+        print("bruh")
+
+        return "False"
+
     return render_template("signup_bootstrap.html")
-
-
-# /signup_check
-#   creates a new USER --> gets put into database (AKA ".not.a.database.file" files)
-#       Will verify that no other user's have the same username
-@app.route("/signup_check", methods=["POST"])
-def signup_check():
-
-    username = request.form.get("username")
-    password = request.form.get("password")
-    email = request.form.get("email")
-
-    return redirect(url_for('index'))
 
 
 # /logout

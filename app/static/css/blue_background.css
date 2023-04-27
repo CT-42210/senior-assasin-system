@@ -1,6 +1,6 @@
 body {
-
-background-color: #87CEFA;
-
+  background-image: url("/static/images/topo_map_2.jpeg");
+  background-repeat: repeat;
+  background-size: 20%;
 }
 
