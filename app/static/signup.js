@@ -14,7 +14,7 @@ function sendData() {
         		  if (response == "False") {
                     $('.alert').remove(); // remove any existing alerts
                     $('body').prepend('<div class="alert alert-dismissible alert-danger fade show" role="alert">' +
-                        '<strong>Oh snap!</strong> ' + "Incorrect username or password" +
+                        '<strong>Oh snap!</strong> ' + "Credential Error!" +
                         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
                 } else {
                     window.location.href = "/";
