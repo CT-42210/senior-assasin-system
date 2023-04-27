@@ -53,9 +53,11 @@ def targets(username):
                     first_opponent = data.read_string_line(username_file, opponent_user_ids[0])
                     second_opponent = data.read_string_line(username_file, opponent_user_ids[1])
 
-                    return_list.append(first_opponent)
-                    return_list.append(second_opponent)
-
+                    try:
+                        return_list.append(first_opponent)
+                        return_list.append(second_opponent)
+                    except IndexError:
+                        print("Index Error when appending opponent list")
                     return return_list
             except ValueError:
                 print("ValueError")
