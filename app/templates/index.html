@@ -13,7 +13,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
 
-
+    {% if 'True' in session['login'] %}
 <section>
   <div class="container border_replacement h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -140,7 +140,9 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
+    {% else %}
 
 
 <div style="color: white;">
@@ -155,4 +157,5 @@
     {% endif %}
 </div>
 
+    {% endif %}
 {% endblock %}
