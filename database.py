@@ -22,6 +22,16 @@ def find_string_line(input, search_string):
     return result if result else False
 
 
+def find_string_matches(input, search_string):
+    input.seek(0)
+    result = 0
+    for line in input:
+        line = line.rstrip()
+        matches = re.findall(r"\b{}\b".format(search_string), line)
+        result += len(matches)
+    return result if result else False
+
+
 def read_string_line(input, line_number):
     input.seek(0)
     for i in range(line_number):
@@ -47,6 +57,7 @@ def append_string_line(input, new_string):
 
 
 def last_line_finder(input):
+    input.seek(0)
     for number in enumerate(input):
         pass
     return number[0]

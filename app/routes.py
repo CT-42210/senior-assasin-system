@@ -5,14 +5,22 @@ import functions
 
 def load_data(username):
     session['login'] = "True"
-    session['team_name'] = functions.teams(username)
+
     target_list = functions.targets(username)
     session['target_team_name'] = target_list[0]
     session['target_user_name_1'] = target_list[1]
     session['target_user_name_2'] = target_list[2]
-    session['teammate_health'] = "Dead"
-    session['teammate_name'] = "functions"
-    team_data_list = [3, 6, 2, 3]
+
+    teammate_data = functions.teammate_data(username)
+    session['team_name'] = teammate_data[0]
+    session['teammate_name'] = teammate_data[1]
+    session['teammate_health'] = teammate_data[2]
+
+    print(teammate_data)
+    print(session['team_name'], session['teammate_name'], session['teammate_health'])
+    print(session)
+
+    team_data_list = functions.total_team_data()
     session['total_teams'] = str(team_data_list[0])
     session['remaining_teams'] = f"{team_data_list[2]}/{team_data_list[0]}"
     session['remaining_players'] = f"{team_data_list[3]}/{team_data_list[1]}"

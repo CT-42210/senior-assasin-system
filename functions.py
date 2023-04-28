@@ -2,12 +2,13 @@
 
 import database
 
-
 username_file = open('database/usernames.not.a.database.file', 'r+')
 password_file = open('database/passwords.not.a.database.file', 'r+')
 team_id_file = open('database/team_ids.not.a.database.file', 'r+')
 team_names_file = open('database/team_names.not.a.database.file', 'r+')
 team_targets_file = open('database/team_targets.not.a.database.file', 'r+')
+team_health_file = open('database/team_health.not.a.database.file', 'r+')
+player_health_file = open('database/player_health.not.a.database.file', 'r+')
 
 
 def login(username, password):
@@ -25,16 +26,30 @@ def login(username, password):
         return False
 
 
-def teams(username):
+def team_data(username):
+    return_list = []
+
     line_number = database.find_string_line(username_file, username)
     if line_number is not False:
         team_id_line = database.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
             try:
                 team_name_line = database.read_string_line(team_names_file, (int(team_id_line) - 1))
-                return team_name_line
+                team_user_lines = database.find_string_line(team_id_file, int(team_id_line))
+                for user_line in team_user_lines:
+                    if user_line == line_number[0]:
+                        pass
+                    else:
+                        teammate_name_line = database.read_string_line(username_file, int(user_line))
+                        teammate_health_line = database.read_string_line(player_health_file, int(user_line))
+
+                        return_list.append(team_name_line)
+                        return_list.append(teammate_name_line)
+                        return_list.append(teammate_health_line)
+                        return return_list
             except ValueError:
                 print("ValueError")
+                return False
 
 
 def targets(username):
@@ -61,6 +76,35 @@ def targets(username):
                     return return_list
             except ValueError:
                 print("ValueError")
+
+
+def teammate_data(username):
+    line_number = database.find_string_line(username_file, username)
+    if line_number is not False:
+        team_id_line = database.read_string_line(team_id_file, line_number[0])
+        if team_id_line != '':
+            try:
+                team_name_line = database.read_string_line(team_names_file, (int(team_id_line) - 1))
+                return team_name_line
+            except ValueError:
+                print("ValueError")
+
+
+def total_team_data():
+    return_list = []
+
+    total_team_number = database.last_line_finder(team_names_file) + 1
+    total_player_number = database.last_line_finder(username_file) + 1
+
+    living_teams_number = database.find_string_matches(team_health_file, "alive")
+    living_players_number = database.find_string_matches(player_health_file, "alive")
+
+    return_list.append(total_team_number)
+    return_list.append(total_player_number)
+    return_list.append(living_teams_number)
+    return_list.append(living_players_number)
+
+    return return_list
 
 
 def account_creator(username, password):
@@ -94,11 +138,11 @@ def team_creater(username, password):
                                  f"Targets: Undefined\n"
                                  f"Are you sure? [Y, n]\n -$")
             if verification == 'y' or 'Y':
-
                 database.edit_string_line(team_id_file, int(first_team_member), new_team_id)
                 database.edit_string_line(team_id_file, int(second_team_member), new_team_id)
                 database.append_string_line(team_names_file, new_team_name)
                 database.append_string_line(team_targets_file, '0')
+
 
 def close():
     username_file.close()
