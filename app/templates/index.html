@@ -80,8 +80,34 @@
                     <div class="card-body margin-fix">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Pending Requests</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Time Remaining</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <p id="countdown"></p>
+
+                            <script>
+                            var countDownDate = new Date("Jan 5, 2024 15:37:00").getTime();
+
+                            var x = setInterval(function() {
+
+                              var now = new Date().getTime();
+
+                              var distance = countDownDate - now;
+
+                              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                              document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                              + minutes + "m " + seconds + "s ";
+
+                              if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById("countdown").innerHTML = "Game Over";
+                              }
+                            }, 1000);
+                            </script>
+                          </div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-comments fa-2x text-gray-300"></i>
