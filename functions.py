@@ -2,8 +2,6 @@
 
 import database
 
-username = input("USERNAME: \n -$")
-password = input("PASSWORD: \n -$")
 
 username_file = open('database/usernames.not.a.database.file', 'r+')
 password_file = open('database/passwords.not.a.database.file', 'r+')
@@ -12,52 +10,62 @@ team_names_file = open('database/team_names.not.a.database.file', 'r+')
 team_targets_file = open('database/team_targets.not.a.database.file', 'r+')
 
 
-def login():
+def login(username, password):
     line_number = database.find_string_line(username_file, username)
     if line_number is False:
         print("Username not found.")
         return
     username_file.seek(0)
-    password_line = database.read_string_line(password_file, line_number)
+    password_line = database.read_string_line(password_file, line_number[0])
     if password_line == password:
         print("Logged in.")
+        return True
     else:
         print("Incorrect password.")
+        return False
 
 
-def teams():
+def teams(username):
     line_number = database.find_string_line(username_file, username)
-    print(line_number)
     if line_number is not False:
-        team_id_line = database.read_string_line(team_id_file, line_number)
-        print(team_id_line)
+        team_id_line = database.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
             try:
                 team_name_line = database.read_string_line(team_names_file, (int(team_id_line) - 1))
-                print(team_name_line)
+                return team_name_line
             except ValueError:
                 print("ValueError")
 
 
-def targets():
+def targets(username):
+    return_list = []
     line_number = database.find_string_line(username_file, username)
-    print(line_number)
     if line_number is not False:
-        team_id_line = database.read_string_line(team_id_file, line_number)
-        print(team_id_line)
+        team_id_line = database.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
             try:
                 team_target_line = database.read_string_line(team_targets_file, (int(team_id_line) - 1))
-                print(team_target_line)
                 target_name_line = database.read_string_line(team_names_file, (int(team_target_line) - 1))
-                print(f"your ops are team {team_target_line}. they are called {target_name_line}")
+                return_list.append(target_name_line)
+                opponent_user_ids = database.find_string_line(team_id_file, team_target_line)
+
+                if opponent_user_ids is not False:
+                    first_opponent = database.read_string_line(username_file, opponent_user_ids[0])
+                    second_opponent = database.read_string_line(username_file, opponent_user_ids[1])
+
+                    try:
+                        return_list.append(first_opponent)
+                        return_list.append(second_opponent)
+                    except IndexError:
+                        print("Index Error when appending opponent list")
+                    return return_list
             except ValueError:
                 print("ValueError")
 
 
-def account_creator():
+def account_creator(username, password):
     new_username = input("What do you want your username to be? \n(No spaces please)\n -$")
-    new_password = input("What do you want your username to be? \n(No spaces please)\n -$")
+    new_password = input("What do you want your password to be? \n(No spaces please)\n -$")
 
     new_team_id = '0'
 
@@ -71,7 +79,7 @@ def account_creator():
         print("error")
 
 
-def team_creater():
+def team_creater(username, password):
     new_team_name = input("Enter the new teams name:\n -$")
     first_team_member = input("Enter the First Members User ID:\n -$")
     second_team_member = input("Enter the Second Members User ID:\n -$")
@@ -92,10 +100,9 @@ def team_creater():
                 database.append_string_line(team_names_file, new_team_name)
                 database.append_string_line(team_targets_file, '0')
 
-team_creater()
-
-username_file.close()
-password_file.close()
-team_id_file.close()
-team_names_file.close()
-team_targets_file.close()
+def close():
+    username_file.close()
+    password_file.close()
+    team_id_file.close()
+    team_names_file.close()
+    team_targets_file.close()
