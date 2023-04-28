@@ -107,7 +107,9 @@ def total_team_data():
     total_team_number = database.last_line_finder(team_names_file) + 1
     total_player_number = database.last_line_finder(username_file) + 1
 
-    living_teams_number = database.find_string_matches(team_health_file, "alive")
+    dead_teams_number = database.find_string_matches(team_health_file, "dead")
+    living_teams_number = total_team_number - dead_teams_number
+
     living_players_number = database.find_string_matches(player_health_file, "alive")
 
     return_list.append(total_team_number)
