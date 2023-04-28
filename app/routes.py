@@ -11,7 +11,7 @@ def load_data(username):
     session['target_user_name_1'] = target_list[1]
     session['target_user_name_2'] = target_list[2]
 
-    teammate_data = functions.teammate_data(username)
+    teammate_data = functions.team_data(username)
     session['team_name'] = teammate_data[0]
     session['teammate_name'] = teammate_data[1]
     session['teammate_health'] = teammate_data[2]
