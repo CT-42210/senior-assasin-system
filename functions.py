@@ -30,6 +30,8 @@ def team_data(username):
     return_list = []
 
     line_number = database.find_string_line(username_file, username)
+
+    player_health = database.read_string_line(player_health_file, line_number[0])
     if line_number is not False:
         team_id_line = database.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
@@ -46,6 +48,7 @@ def team_data(username):
                         return_list.append(team_name_line)
                         return_list.append(teammate_name_line)
                         return_list.append(teammate_health_line)
+                        return_list.append(player_health)
                         return return_list
             except ValueError:
                 print("ValueError")
@@ -60,17 +63,25 @@ def targets(username):
         if team_id_line != '':
             try:
                 team_target_line = database.read_string_line(team_targets_file, (int(team_id_line) - 1))
-                target_name_line = database.read_string_line(team_names_file, (int(team_target_line) - 1))
-                return_list.append(target_name_line)
+                target_team_name_line = database.read_string_line(team_names_file, (int(team_target_line) - 1))
+                target_team_health_line = database.read_string_line(team_health_file, (int(team_target_line) - 1))
                 opponent_user_ids = database.find_string_line(team_id_file, team_target_line)
 
                 if opponent_user_ids is not False:
                     first_opponent = database.read_string_line(username_file, opponent_user_ids[0])
                     second_opponent = database.read_string_line(username_file, opponent_user_ids[1])
+                    first_opponent_health = database.read_string_line(username_file, opponent_user_ids[0])
+                    second_opponent_health = database.read_string_line(username_file, opponent_user_ids[1])
 
                     try:
+                        return_list.append(target_team_name_line)
                         return_list.append(first_opponent)
                         return_list.append(second_opponent)
+
+                        return_list.append(target_team_health_line)
+                        return_list.append(first_opponent_health)
+                        return_list.append(second_opponent_health)
+
                     except IndexError:
                         print("Index Error when appending opponent list")
                     return return_list

@@ -21,12 +21,12 @@
         <div class="card_replacement rounded-5-replacement text-black">
           <div class="row g-0">
             <div class="container-fluid">
-              <!-- Page Heading -->
+              <!-- heading -->
               <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="mt-3 ml-4 text-gray-800">Welcome {{ session['username'] }}!</h1>
               </div>
               <div class="row-fix">
-                <!-- Earnings (Monthly) Card Example -->
+                <!-- card info -->
                 <div class="col-xl-3 col-md-6 mb-4">
                   <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body margin-fix">
@@ -42,7 +42,8 @@
                     </div>
                   </div>
                 </div>
-                <!-- Earnings (Annual) Card Example -->
+                <!-- end card info -->
+                <!-- card info -->
                 <div class="col-xl-3 col-md-6 mb-4">
                   <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body margin-fix">
@@ -58,13 +59,14 @@
                     </div>
                   </div>
                 </div>
-                <!-- Tasks Card Example -->
+                <!-- end card info -->
+                <!-- card info -->
                 <div class="col-xl-3 col-md-6 mb-4">
                   <div class="card border-left-info shadow h-100 py-2">
                     <div class="card-body margin-fix">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Remaining Players</div>
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Players Remaining</div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">{{ session['remaining_players'] }}</div>
                         </div>
                         <div class="col-auto">
@@ -74,7 +76,8 @@
                     </div>
                   </div>
                 </div>
-                <!-- Pending Requests Card Example -->
+                <!-- end card info -->
+                <!-- card info -->
                 <div class="col-xl-3 col-md-6 mb-4">
                   <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body margin-fix">
@@ -116,6 +119,7 @@
                     </div>
                   </div>
                 </div>
+                <!-- card info -->
               </div>
               <div class="row-fix">
                 <div class="row-fix-2">
@@ -129,7 +133,8 @@
                             <svg class="bi bi-people-fill fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
                                  width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"></path>
+                                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75
+                                1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"></path>
                                 <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path>
                             </svg>
                           </div>
@@ -178,34 +183,134 @@
                     {% endif %}
                   </div>
                   <div class="col-lg-6 mb-4">
-                    <div class="card bg-info text-white shadow">
-                      <div class="card-body">Info</div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-warning text-white shadow">
-                      <div class="card-body">Warning</div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
+                    {% if 'alive' in session['target_team_health'] %}
                     <div class="card bg-danger text-white shadow">
-                      <div class="card-body">Danger</div>
+                      <div class="card-body">
+                        <!-- card content -->
+                        <div class="row">
+                          <div class="col-lg-10">Target Team - {{ session['target_team_name'] }}</div>
+                          <div class="col text-center">
+                            <svg class="bi bi-person-check fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
+                                 width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0
+                                1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516
+                                10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708
+                                0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <!-- card content end -->
+                      </div>
                     </div>
+                    {% elif 'moribund' in session['target_team_health'] %}
+                    <div class="card bg-warning text-white shadow">
+                      <div class="card-body">
+                        <!-- card content -->
+                        <div class="row">
+                          <div class="col-lg-10">Target Team - {{ session['target_team_name'] }}</div>
+                          <div class="col text-center">
+                            <svg class="bi bi-person-dash fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
+                                 width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0
+                                1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516
+                                10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <!-- card content end -->
+                      </div>
+                    </div>
+                    {% elif 'dead' in session['target_team_health'] %}
+                    <div class="card bg-success text-white shadow">
+                      <div class="card-body">
+                        <!-- card content -->
+                        <div class="row">
+                          <div class="col-lg-10">Target Team - {{ session['target_team_name'] }}</div>
+                          <div class="col text-center">
+                            <svg class="bi bi-person-x fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
+                                 width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4
+                                8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516
+                                10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5
+                                0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0
+                                1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <!-- card content end -->
+                      </div>
+                    </div>
+                    {% endif %}
                   </div>
                   <div class="col-lg-6 mb-4">
-                    <div class="card bg-secondary text-white shadow">
-                      <div class="card-body">Secondary</div>
+                    {% if 'alive' in session['player_health'] %}
+                    <div class="card bg-info text-white shadow">
+                      <div class="card-body">
+                        <!-- card content -->
+                        <div class="row">
+                          <div class="col-lg-10">Your status - {{ session['player_health'] }}</div>
+                          <div class="col text-center">
+                            <svg class="bi bi-person-check-fill fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
+                                 width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708
+                                0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
+                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <!-- card content end -->
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card bg-light text-black shadow">
-                      <div class="card-body">Light</div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
+                    {% elif 'dead' in session['player_health'] %}
                     <div class="card bg-dark text-white shadow">
-                      <div class="card-body">Dark</div>
+                      <div class="card-body">
+                        <!-- card content -->
+                        <div class="row">
+                          <div class="col-lg-10">Teammate - {{ session['player_health'] }}</div>
+                          <div class="col text-center">
+                            <svg class="bi bi-person-x-fill fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
+                                 width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3
+                                3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0
+                                1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0
+                                1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <!-- card content end -->
+                      </div>
                     </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-lg-6 mb-4 text-center">
+                    <a href="#" class="btn btn-primary btn-icon-split">
+                        <span class="icon text-white-50 button-radius">
+                            <svg class="bi bi-arrow-right-square fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
+                                 width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1
+                                1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5
+                                5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5
+                                0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                            </svg>
+                        </span>
+                        <span class="text">Split Button Primary</span>
+                    </a>
+                  </div>
+                  <div class="col-lg-6 mb-4 text-center">
+                    <a href="#" class="btn btn-success btn-icon-split">
+                        <span class="icon text-white-50 button-radius">
+                            <svg class="bi bi-arrow-right-square fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
+                                 width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1
+                                1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5
+                                5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5
+                                0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                            </svg>
+                        </span>
+                    </a>
                   </div>
                 </div>
               </div>

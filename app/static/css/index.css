@@ -61,3 +61,7 @@ body {
 .margin-left-fix {
   margin-left: 0.2 !important;
 }
+
+.button-radius {
+  border-radius: 0.2rem;
+}
