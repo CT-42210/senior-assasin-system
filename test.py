@@ -1,22 +1,22 @@
 # IM GOING TO FUCKING KILL MYSELF
 
-import data
+import database
 
 
-username_file = open('data/usernames.not.a.database.file', 'r+')
-password_file = open('data/passwords.not.a.database.file', 'r+')
-team_id_file = open('data/team_ids.not.a.database.file', 'r+')
-team_names_file = open('data/team_names.not.a.database.file', 'r+')
-team_targets_file = open('data/team_targets.not.a.database.file', 'r+')
+username_file = open('database/usernames.not.a.database.file', 'r+')
+password_file = open('database/passwords.not.a.database.file', 'r+')
+team_id_file = open('database/team_ids.not.a.database.file', 'r+')
+team_names_file = open('database/team_names.not.a.database.file', 'r+')
+team_targets_file = open('database/team_targets.not.a.database.file', 'r+')
 
 
 def login(username, password):
-    line_number = data.find_string_line(username_file, username)
+    line_number = database.find_string_line(username_file, username)
     if line_number is False:
         print("Username not found.")
         return
     username_file.seek(0)
-    password_line = data.read_string_line(password_file, line_number[0])
+    password_line = database.read_string_line(password_file, line_number[0])
     if password_line == password:
         print("Logged in.")
         return True
@@ -26,12 +26,12 @@ def login(username, password):
 
 
 def teams(username):
-    line_number = data.find_string_line(username_file, username)
+    line_number = database.find_string_line(username_file, username)
     if line_number is not False:
-        team_id_line = data.read_string_line(team_id_file, line_number[0])
+        team_id_line = database.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
             try:
-                team_name_line = data.read_string_line(team_names_file, (int(team_id_line) - 1))
+                team_name_line = database.read_string_line(team_names_file, (int(team_id_line) - 1))
                 return team_name_line
             except ValueError:
                 print("ValueError")
@@ -39,19 +39,19 @@ def teams(username):
 
 def targets(username):
     return_list = []
-    line_number = data.find_string_line(username_file, username)
+    line_number = database.find_string_line(username_file, username)
     if line_number is not False:
-        team_id_line = data.read_string_line(team_id_file, line_number[0])
+        team_id_line = database.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
             try:
-                team_target_line = data.read_string_line(team_targets_file, (int(team_id_line) - 1))
-                target_name_line = data.read_string_line(team_names_file, (int(team_target_line) - 1))
+                team_target_line = database.read_string_line(team_targets_file, (int(team_id_line) - 1))
+                target_name_line = database.read_string_line(team_names_file, (int(team_target_line) - 1))
                 return_list.append(target_name_line)
-                opponent_user_ids = data.find_string_line(team_id_file, team_target_line)
+                opponent_user_ids = database.find_string_line(team_id_file, team_target_line)
 
                 if opponent_user_ids is not False:
-                    first_opponent = data.read_string_line(username_file, opponent_user_ids[0])
-                    second_opponent = data.read_string_line(username_file, opponent_user_ids[1])
+                    first_opponent = database.read_string_line(username_file, opponent_user_ids[0])
+                    second_opponent = database.read_string_line(username_file, opponent_user_ids[1])
 
                     try:
                         return_list.append(first_opponent)
@@ -69,10 +69,10 @@ def account_creator(username, password):
 
     new_team_id = '0'
 
-    if data.find_string(username_file, new_username) is False:
-        data.append_string_line(username_file, new_username)
-        data.append_string_line(password_file, new_password)
-        data.append_string_line(team_id_file, new_team_id)
+    if database.find_string(username_file, new_username) is False:
+        database.append_string_line(username_file, new_username)
+        database.append_string_line(password_file, new_password)
+        database.append_string_line(team_id_file, new_team_id)
 
         print(f"user created.\nUsername: {new_username}\nPassword: {new_password}\nTeam: Unassigned")
     else:
@@ -84,21 +84,21 @@ def team_creater(username, password):
     first_team_member = input("Enter the First Members User ID:\n -$")
     second_team_member = input("Enter the Second Members User ID:\n -$")
 
-    new_team_id = data.last_line_finder(team_names_file)
+    new_team_id = database.last_line_finder(team_names_file)
 
-    if data.read_string_line(team_id_file, int(first_team_member)) == '0':
-        if data.read_string_line(team_id_file, int(second_team_member)) == '0':
+    if database.read_string_line(team_id_file, int(first_team_member)) == '0':
+        if database.read_string_line(team_id_file, int(second_team_member)) == '0':
             verification = input(f"creating new team\nTeam Name: {new_team_name}\n"
-                                 f"members: {data.read_string_line(username_file, int(first_team_member))}, "
-                                 f"{data.read_string_line(username_file, int(first_team_member))}\n"
+                                 f"members: {database.read_string_line(username_file, int(first_team_member))}, "
+                                 f"{database.read_string_line(username_file, int(first_team_member))}\n"
                                  f"Targets: Undefined\n"
                                  f"Are you sure? [Y, n]\n -$")
             if verification == 'y' or 'Y':
 
-                data.edit_string_line(team_id_file, int(first_team_member), new_team_id)
-                data.edit_string_line(team_id_file, int(second_team_member), new_team_id)
-                data.append_string_line(team_names_file, new_team_name)
-                data.append_string_line(team_targets_file, '0')
+                database.edit_string_line(team_id_file, int(first_team_member), new_team_id)
+                database.edit_string_line(team_id_file, int(second_team_member), new_team_id)
+                database.append_string_line(team_names_file, new_team_name)
+                database.append_string_line(team_targets_file, '0')
 
 def close():
     username_file.close()

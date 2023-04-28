@@ -9,8 +9,13 @@ def load_data(username):
     session['target_team_name'] = target_list[0]
     session['target_user_name_1'] = target_list[1]
     session['target_user_name_2'] = target_list[2]
-    session['teammate_health'] = "Alive"
+    session['teammate_health'] = "Dead"
     session['teammate_name'] = "test"
+    team_data_list = [3, 6, 2, 3]
+    session['total_teams'] = str(team_data_list[0])
+    session['remaining_teams'] = f"{team_data_list[2]}/{team_data_list[0]}"
+    session['remaining_players'] = f"{team_data_list[3]}/{team_data_list[1]}"
+
 
 
 # / | /index
