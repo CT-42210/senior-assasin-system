@@ -38,6 +38,14 @@ def index():
     return render_template('index.html')
 
 
+# / | /index
+#   home page of server
+@app.route('/rules')
+def rules():
+
+    return render_template('rules.html')
+
+
 # /login page
 #   if user already has an account they can log in here
 @app.route('/login', methods=["GET", "POST"])

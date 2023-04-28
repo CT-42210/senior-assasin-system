@@ -18,3 +18,8 @@
     margin-bottom: 10px;
   }
 }
+
+.flip_im {
+    /* flip vertically */
+    transform: rotateX(180deg);
+}
