@@ -46,7 +46,7 @@ def advanced():
 
 
 @app.route('/settings')
-def advanced():
+def settings():
 
     return render_template('settings.html')
 
