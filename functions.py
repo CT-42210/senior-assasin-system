@@ -120,9 +120,7 @@ def total_team_data():
     return return_list
 
 
-def account_creator(username, password):
-    new_username = input("What do you want your username to be? \n(No spaces please)\n -$")
-    new_password = input("What do you want your password to be? \n(No spaces please)\n -$")
+def account_creator(new_username, new_password):
 
     new_team_id = '0'
 

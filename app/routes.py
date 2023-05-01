@@ -28,26 +28,18 @@ def load_data(username):
     session['remaining_players'] = f"{team_data_list[3]}/{team_data_list[1]}"
 
 
-# / | /index
-#   home page of server
 @app.route('/')
 @app.route('/index')
 def index():
-    # session['username'] = "johannes"
-    # session.clear()
     return render_template('index.html')
 
 
-# / | /index
-#   home page of server
 @app.route('/rules')
 def rules():
 
     return render_template('rules.html')
 
 
-# /login page
-#   if user already has an account they can log in here
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -69,8 +61,6 @@ def login():
     return render_template("login.html")
 
 
-# /signup
-#   sign-up page for a user
 @app.route("/signup", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":
@@ -84,8 +74,6 @@ def sign_up():
     return render_template("signup_bootstrap.html")
 
 
-# /logout
-#   clears all session data from user, seemingly logging them out
 @app.route('/logout')
 def logout():
     session.clear()
