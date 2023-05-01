@@ -30,25 +30,25 @@ def load_data(username):
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title="Home")
 
 
 @app.route('/rules')
 def rules():
 
-    return render_template('rules.html')
+    return render_template('rules.html', title="Rules")
 
 
 @app.route('/advanced')
 def advanced():
 
-    return render_template('advanced.html')
+    return render_template('advanced.html', title="Advanced")
 
 
 @app.route('/settings')
 def settings():
 
-    return render_template('settings.html')
+    return render_template('settings.html', title="Settings")
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -68,7 +68,7 @@ def login():
         else:
             return "False"
 
-    return render_template("login.html")
+    return render_template("login.html", title="Login")
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -81,7 +81,7 @@ def sign_up():
 
         return "False"
 
-    return render_template("signup_bootstrap.html")
+    return render_template("signup.html", title="Sign Up")
 
 
 @app.route('/logout')
