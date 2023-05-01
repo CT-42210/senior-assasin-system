@@ -1,6 +1,5 @@
 from flask import render_template, request, session, redirect, url_for, flash
 
-import database
 from app import app
 import functions
 
@@ -39,6 +38,17 @@ def rules():
 
     return render_template('rules.html')
 
+
+@app.route('/advanced')
+def advanced():
+
+    return render_template('advanced.html')
+
+
+@app.route('/settings')
+def advanced():
+
+    return render_template('settings.html')
 
 @app.route('/login', methods=["GET", "POST"])
 def login():

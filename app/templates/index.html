@@ -1,17 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
 
-<!-- Begin Page Content -->
-<link rel="stylesheet" href="/static/css/login_bootstrap.css">
-<!-- Include Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
-<!-- Include background CSS -->
+<link rel="stylesheet" href="/static/css/login_bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/css/pattern_background.css">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 
     {% if 'True' in session['login'] %}
@@ -287,7 +282,7 @@
                     {% endif %}
                   </div>
                   <div class="col-lg-6 mb-4 text-center">
-                    <a href="#" class="btn btn-primary gradient-custom-2 btn-icon-split">
+                    <a href="/advanced" class="btn btn-primary gradient-custom-2 btn-icon-split">
                       <span class="icon text-white-50 button-radius">
                         <svg class="bi bi-arrow-right-square fa-2x text-white" xmlns="http://www.w3.org/2000/svg"
                              width="auto" height="1.5em" fill="currentColor" viewBox="0 0 16 16">
@@ -301,7 +296,7 @@
                     </a>
                   </div>
                   <div class="col-lg-6 mb-4 text-center">
-                    <a href="#" class="btn btn-primary gradient-custom-2 btn-icon-split">
+                    <a href="/settings" class="btn btn-primary gradient-custom-2 btn-icon-split">
                       <span class="icon text-white-50 button-radius">
                         <svg class="bi bi-gear fa-2x text-white" xmlns="http://www.w3.org/2000/svg" width="auto"
                              height="1.5em" fill="currentColor" viewBox="0 0 16 16">
