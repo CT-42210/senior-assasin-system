@@ -1,12 +1,14 @@
 <html>
 <head>
 
+    <link rel="stylesheet" href="/static/css/navbar.css">
     <link rel="icon" href="{{ url_for('static', filename='images/web_icon.png') }}" type="image/png">
     {% if title %}
     <title>{{ title }} - Assassins</title>
     {% else %}
     <title>Senior Assassins</title>
     {% endif %}
+    <link href="static/css/sb-admin-2.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/static/css/pattern_background.css">
 
@@ -14,11 +16,12 @@
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');</style>
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Ubuntu+Mono&display=swap');</style>
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
+
 </head>
-<body style="color: white; font-family: 'Ubuntu Light', sans-serif;">
+<body style="color: white; font-family: 'Ubuntu Mono', sans-serif;">
 
  {% if 'True' in session['login'] %}
-  <div >
+  <div style="color: white;">
     Assasins-Web:
       <a href="/index">Home</a>
       <a href="/rules">Rules</a>
@@ -26,7 +29,7 @@
 </div>
 <hr>
     {% else %}
- <div">
+ <div style="color: white;">
     Assasins-Web:
      <a href="/index">Home</a>
      <a href="/rules">Rules</a>
@@ -39,15 +42,15 @@
 <h1>User Settings</h1>
  <h3>Change any values you want, then click the save button at the bottom.</h3>
 <form>
-    <label for="autofill-input">Username:</label>
-    <input type="text" id="autofill-input" name="autofill-input" value="{{ session['username'] }}" autocomplete="on">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="{{ session['username'] }}" autocomplete="on">
 
     <button type="submit">Submit</button>
 </form>
 
 <form>
-    <label for="date-input">Date Input:</label>
-    <input type="date" id="date-input" name="date-input">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" value="idkwhattoputhere" autocomplete="on">
 
     <button type="submit">Submit</button>
 </form>
