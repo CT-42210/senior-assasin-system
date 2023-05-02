@@ -9,6 +9,7 @@ team_names_file = open('database/team_names.not.a.database.file', 'r+')
 team_targets_file = open('database/team_targets.not.a.database.file', 'r+')
 team_health_file = open('database/team_health.not.a.database.file', 'r+')
 player_health_file = open('database/player_health.not.a.database.file', 'r+')
+user_address_file = open('database/user_adresses.not.a.database.file', 'r+')
 
 
 def login(username, password):
@@ -32,6 +33,7 @@ def team_data(username):
     line_number = database.find_string_line(username_file, username)
 
     player_health = database.read_string_line(player_health_file, line_number[0])
+    player_address = database.read_string_line(user_address_file, line_number[0])
     if line_number is not False:
         team_id_line = database.read_string_line(team_id_file, line_number[0])
         if team_id_line != '':
@@ -42,13 +44,16 @@ def team_data(username):
                     if user_line == line_number[0]:
                         pass
                     else:
-                        teammate_name_line = database.read_string_line(username_file, int(user_line))
-                        teammate_health_line = database.read_string_line(player_health_file, int(user_line))
+                        teammate_name = database.read_string_line(username_file, int(user_line))
+                        teammate_health = database.read_string_line(player_health_file, int(user_line))
+                        teammate_address = database.read_string_line(user_address_file, int(user_line))
 
                         return_list.append(team_name_line)
-                        return_list.append(teammate_name_line)
-                        return_list.append(teammate_health_line)
+                        return_list.append(teammate_name)
+                        return_list.append(teammate_health)
                         return_list.append(player_health)
+                        return_list.append(player_address)
+                        return_list.append(teammate_address)
                         return return_list
             except ValueError:
                 print("ValueError")
@@ -63,8 +68,8 @@ def targets(username):
         if team_id_line != '':
             try:
                 team_target_line = database.read_string_line(team_targets_file, (int(team_id_line) - 1))
-                target_team_name_line = database.read_string_line(team_names_file, (int(team_target_line) - 1))
-                target_team_health_line = database.read_string_line(team_health_file, (int(team_target_line) - 1))
+                target_team_name = database.read_string_line(team_names_file, (int(team_target_line) - 1))
+                target_team_health = database.read_string_line(team_health_file, (int(team_target_line) - 1))
                 opponent_user_ids = database.find_string_line(team_id_file, team_target_line)
 
                 if opponent_user_ids is not False:
@@ -72,15 +77,19 @@ def targets(username):
                     second_opponent = database.read_string_line(username_file, opponent_user_ids[1])
                     first_opponent_health = database.read_string_line(username_file, opponent_user_ids[0])
                     second_opponent_health = database.read_string_line(username_file, opponent_user_ids[1])
+                    first_opponent_address = database.read_string_line(user_address_file, opponent_user_ids[0])
+                    second_opponent_address = database.read_string_line(user_address_file, opponent_user_ids[1])
 
                     try:
-                        return_list.append(target_team_name_line)
+                        return_list.append(target_team_name)
                         return_list.append(first_opponent)
                         return_list.append(second_opponent)
 
-                        return_list.append(target_team_health_line)
+                        return_list.append(target_team_health)
                         return_list.append(first_opponent_health)
                         return_list.append(second_opponent_health)
+                        return_list.append(first_opponent_address)
+                        return_list.append(second_opponent_address)
 
                     except IndexError:
                         print("Index Error when appending opponent list")

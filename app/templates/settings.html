@@ -39,21 +39,38 @@
 <hr>
     {% endif %}
 
-<h1>User Settings</h1>
- <h3>Change any values you want, then click the save button at the bottom.</h3>
-<form>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" value="{{ session['username'] }}" autocomplete="on">
+<section class="text-center">
+    <style>input[type="text"], input[type="password"] {resize: both; overflow: hidden; width: 30%;}</style>
+    <h1>User Settings</h1>
+    <h3>Change any values you want, then click the save button at the bottom.</h3>
+
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ session['username'] }}" autocomplete="on">
+    </form>
+
+    <form>
+        <label for="password1">Password:</label>
+        <input type="password" id="password1" name="password1" value="idkwhattoputhere" autocomplete="on">
+    </form>
+
+    <form>
+        <label for="password2">Verify New Password:</label>
+        <input type="password" id="password2" name="password2">
+    </form>
+
+    <form>
+        <label for="team_name">Team Name:</label>
+        <input type="text" id="team_name" name="team_name" value="{{ session['team_name'] }}" autocomplete="on">
+    </form>
+
+    <form>
+        <label for="user_address">Address:</label>
+        <input type="text" id="user_address" name="user_address" value="{{ session['player_address'] }}" autocomplete="on">
+    </form>
 
     <button type="submit">Submit</button>
-</form>
-
-<form>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" value="idkwhattoputhere" autocomplete="on">
-
-    <button type="submit">Submit</button>
-</form>
+</section>
 
 </body>
 </html>

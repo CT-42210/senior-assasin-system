@@ -12,6 +12,8 @@ def load_data(username):
     session['teammate_name'] = team_data[1]
     session['teammate_health'] = team_data[2]
     session['player_health'] = team_data[3]
+    session['player_address'] = team_data[4]
+    session['teammate_address'] = team_data[5]
 
     target_data = functions.targets(username)
     session['target_team_name'] = target_data[0]
@@ -20,6 +22,8 @@ def load_data(username):
     session['target_team_health'] = target_data[3]
     session['target_user_health_1'] = target_data[4]
     session['target_user_health_2'] = target_data[5]
+    session['target_user_address_1'] = target_data[6]
+    session['target_user_address_2'] = target_data[7]
 
     team_data_list = functions.total_team_data()
     session['total_teams'] = str(team_data_list[0])
