@@ -1,9 +1,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="/static/css/navbar.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Ubuntu+Mono&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
     <link rel="icon" href="{{ url_for('static', filename='images/web_icon.png') }}" type="image/png">
     {% if title %}
     <title>{{ title }} - Assasins</title>
@@ -23,7 +23,7 @@
 <body>
 
  {% if 'True' in session['login'] %}
-  <div style="color: white;" >
+  <div style="color: white; font-family: 'Ubuntu Mono', sans-serif;">
     Assasins-Web:
       <a href="/index">Home</a>
       <a href="/rules">Rules</a>
@@ -31,7 +31,7 @@
 </div>
 <hr>
     {% else %}
- <div style="color: white;" >
+ <div style="color: white; font-family: 'Ubuntu Mono', sans-serif;">
     Assasins-Web:
      <a href="/index">Home</a>
      <a href="/rules">Rules</a>

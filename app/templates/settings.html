@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/static/css/pattern_background.css">
 
     <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" href="/static/css/settings.css">
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');</style>
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Ubuntu+Mono&display=swap');</style>
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
@@ -71,6 +72,16 @@
 
     <button type="submit">Submit</button>
 </section>
+
+<script>
+const inputs = document.querySelectorAll('input[type="text"], input[type="password"]');
+
+inputs.forEach(input => {
+  input.addEventListener('input', () => {
+    input.classList.add('edited');
+  });
+});
+</script>
 
 </body>
 </html>
