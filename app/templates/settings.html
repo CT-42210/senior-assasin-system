@@ -3,6 +3,9 @@
 
     <link rel="stylesheet" href="/static/css/navbar.css">
     <link rel="icon" href="{{ url_for('static', filename='images/web_icon.png') }}" type="image/png">
+    <script src="{{url_for('static', filename='settings.js')}}"></script>
+    <script src="{{url_for('static', filename='JQ.js')}}"></script>
+    <link rel="stylesheet" href="/static/css/login_bootstrap.css">
     {% if title %}
     <title>{{ title }} - Assassins</title>
     {% else %}
@@ -11,7 +14,6 @@
     <link href="static/css/sb-admin-2.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/static/css/pattern_background.css">
-
     <link rel="stylesheet" href="/static/css/navbar.css">
     <link rel="stylesheet" href="/static/css/settings.css">
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');</style>
@@ -70,7 +72,8 @@
         <input type="text" id="user_address" name="user_address" value="{{ session['player_address'] }}" autocomplete="on">
     </form>
 
-    <button type="submit">Submit</button>
+    <button class="btn btn-primary gradient-custom-2 mb-4" onclick="sendData_basic()" type="button">Submit</button>
+
 </section>
 
 <script>

@@ -39,20 +39,36 @@ def index():
 
 @app.route('/rules')
 def rules():
-
     return render_template('rules.html', title="Rules")
 
 
 @app.route('/advanced')
 def advanced():
-
     return render_template('advanced.html', title="Advanced")
 
 
-@app.route('/settings')
+@app.route('/settings', methods=["GET", "POST"])
 def settings():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password1 = request.form.get("password1")
+        password2 = request.form.get("password2")
+        team_name = request.form.get("team_name")
+        user_address = request.form.get("user_address")
+
+        if username != session['username']:
+            print("username changed")
+        if password1 != session['username']:
+            print("password changed")
+        if team_name != session['team_name']:
+            print("team name changed")
+        if user_address != session['player_address']:
+            print("user_address changed")
+
+        print(username, password1, password2, team_name, user_address)
 
     return render_template('settings.html', title="Settings")
+
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
