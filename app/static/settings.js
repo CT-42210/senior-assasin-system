@@ -1,8 +1,8 @@
 function sendData_basic() {
-	if (document.getElementById("username").value.length == 0 ||
-        document.getElementById("password1").value.length == 0 ||
-        document.getElementById("team_name").value.length == 0 ||
-        document.getElementById("user_address").value.length == 0) {
+	if (document.getElementById("username").value.length === 0 ||
+        document.getElementById("password1").value.length === 0 ||
+        document.getElementById("team_name").value.length === 0 ||
+        document.getElementById("user_address").value.length === 0) {
 		console.log("ERROR! missing_data");
 		return;
 	} else {
@@ -37,10 +37,10 @@ function sendData_basic() {
 }
 
 function sendData_admin() {
-	if (document.getElementById("username").value.length == 0 ||
-        document.getElementById("password1").value.length == 0 ||
-        document.getElementById("team_name").value.length == 0 ||
-        document.getElementById("user_address").value.length == 0) {
+	if (document.getElementById("username").value.length === 0 ||
+        document.getElementById("password1").value.length === 0 ||
+        document.getElementById("team_name").value.length === 0 ||
+        document.getElementById("user_address").value.length === 0) {
 		console.log("ERROR! missing_data");
 		return;
 	} else {

@@ -1,5 +1,7 @@
 function sendData() {
-	if (document.getElementById("username_input").value.length == 0 || document.getElementById("password_input").value.length == 0 || document.getElementById("email_input").value.length == 0) {
+	if (document.getElementById("username_input").value.length === 0 ||
+        document.getElementById("password_input").value.length === 0 ||
+        document.getElementById("email_input").value.length === 0) {
 		console.log("ERROR! no password or username or email");
 		return;
 	} else {
