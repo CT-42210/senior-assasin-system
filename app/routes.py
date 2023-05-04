@@ -113,7 +113,14 @@ def sign_up():
         username = request.form.get("username")
         password = request.form.get("password")
         email = request.form.get("email")
-        print("bruh")
+
+        msg = Message(
+            f'hello {username}',
+            sender='nkjcgpt@gmail.com',
+            recipients=[f'{email}']
+        )
+        msg.body = 'Hello!'
+        mail.send(msg)
 
         return "False"
 
