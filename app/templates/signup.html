@@ -36,6 +36,9 @@
                 </div>
 
                 <form>
+
+                  <input type="hidden" id="csrf_tokenS" name="csrf_token" value="{{ csrf_token() }}"/>
+
                   <p>Sign up!</p>
 
                   <div class="form-outline mb-4">

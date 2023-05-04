@@ -1,5 +1,5 @@
 from flask import render_template, request, session, redirect, url_for, flash
-
+from flask_wtf.csrf import CSRFError
 from app import app
 import functions
 
@@ -30,6 +30,10 @@ def load_data(username):
     session['remaining_teams'] = f"{team_data_list[2]}/{team_data_list[0]}"
     session['remaining_players'] = f"{team_data_list[3]}/{team_data_list[1]}"
 
+
+@app.errorhandler(CSRFError)
+def handle_csrf_error(e):
+    return render_template('csrf_error.html', reason=e.description), 400
 
 @app.route('/')
 @app.route('/index')

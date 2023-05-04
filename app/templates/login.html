@@ -35,6 +35,7 @@
                 </div>
 
                 <form>
+                  <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}"/>
                   <p>Please login to your account</p>
 
                   <div class="form-outline mb-4">
