@@ -1,8 +1,20 @@
-from flask import render_template, request, session, redirect, url_for, flash
+from flask import render_template, request, session, redirect, url_for, flash, Flask
 from flask_wtf.csrf import CSRFError
 from app import app
 import functions
+from flask_mail import Mail, Message
 
+mail = Mail(app)
+# instantiate the mail class
+
+# configuration of mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'nkjcgpt@gmail.com'
+app.config['MAIL_PASSWORD'] = 'hpwsarpxwwxfcrbe'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 def load_data(username):
     session['login'] = "True"
