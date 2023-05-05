@@ -116,7 +116,7 @@ def sign_up():
 
         msg = Message(
             f'hello {username}',
-            sender='nkjcgpt@gmail.com',
+            sender=("SeniorAssasins", "nkjcgpt@gmail.com"),
             recipients=[f'{email}']
         )
         msg.body = 'Hello!'
