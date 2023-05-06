@@ -1,6 +1,6 @@
 import smtplib
 
-from flask import render_template, request, session, redirect, url_for, flash, Flask
+from flask import render_template, request, session, redirect, url_for
 from flask_wtf.csrf import CSRFError
 from app import app
 import functions
@@ -16,7 +16,9 @@ app.config['MAIL_USERNAME'] = 'nkjcgpt@gmail.com'
 app.config['MAIL_PASSWORD'] = 'hpwsarpxwwxfcrbe'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
+
 mail = Mail(app)
+
 
 def load_data(username):
     session['login'] = "True"
@@ -48,6 +50,7 @@ def load_data(username):
 @app.errorhandler(CSRFError)
 def handle_csrf_error(e):
     return render_template('csrf_error.html', reason=e.description), 400
+
 
 @app.route('/')
 @app.route('/index')
@@ -126,10 +129,11 @@ def sign_up():
             # msg.html = render_template('index.html', **kwargs)
             mail.send(msg)
 
-            return "error"
-        except smtplib.SMTPDataError:
-
             return "False"
+        except smtplib.SMTPDataError:
+            return "emailError"
+        except smtplib.SMTPRecipientsRefused:
+            return "FalseMail"
 
     return render_template("signup.html", title="Sign Up")
 

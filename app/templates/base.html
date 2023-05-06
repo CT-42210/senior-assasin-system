@@ -23,21 +23,25 @@
 <body>
 
  {% if 'True' in session['login'] %}
-  <div style="color: white; font-family: 'Ubuntu Mono', sans-serif;">
+ <div class="containernig">
+    <div style="color: white; font-family: 'Ubuntu Mono', sans-serif;">
     Assasins-Web:
       <a href="/index">Home</a>
       <a href="/rules">Rules</a>
       <a href="/logout">Log Out</a>
-</div>
+    </div>
+ </div>
 <hr>
     {% else %}
- <div style="color: white; font-family: 'Ubuntu Mono', sans-serif;">
-    Assasins-Web:
-     <a href="/index">Home</a>
-     <a href="/rules">Rules</a>
-     <a href="/login">Login</a>
-     <a href="/signup">SignUp</a>
-</div>
+  <div class="containernig">
+     <div style="color: white; font-family: 'Ubuntu Mono', sans-serif;">
+        Assasins-Web:
+         <a href="/index">Home</a>
+         <a href="/rules">Rules</a>
+         <a href="/login">Login</a>
+         <a href="/signup">SignUp</a>
+    </div>
+  </div>
 <hr>
     {% endif %}
 

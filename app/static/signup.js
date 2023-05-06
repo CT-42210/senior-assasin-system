@@ -28,7 +28,19 @@ function sendData() {
                     $('body').prepend('<div class="alert alert-dismissible alert-danger fade show" role="alert">' +
                         '<strong>Oh snap!</strong> ' + "Credential Error!" +
                         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                } else {
+                  } else if (response == "emailError") {
+                    $('.alert').remove(); // remove any existing alerts
+                    $('body').prepend('<div class="alert alert-dismissible alert-danger fade show" role="alert">' +
+                        '<strong>Oh snap!</strong> ' + "Currently Experiencing Email Overload!" +
+                        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                }
+                    else if (response == "FalseMail") {
+                    $('.alert').remove(); // remove any existing alerts
+                    $('body').prepend('<div class="alert alert-dismissible alert-danger fade show" role="alert">' +
+                        '<strong>Oh snap!</strong> ' + "Please Provide another Email." +
+                        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                    }
+                else {
                     window.location.href = "/";
                 }
         }
