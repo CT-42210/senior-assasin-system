@@ -1,5 +1,5 @@
 import smtplib
-
+import datetime
 from flask import render_template, request, session, redirect, url_for
 from flask_wtf.csrf import CSRFError
 from app import app
@@ -126,7 +126,7 @@ def sign_up():
                 recipients=[f'{email}']
             )
             msg.body = 'Hello!'
-            # msg.html = render_template('index.html', **kwargs)
+            msg.html = render_template('verification_email.html')
             mail.send(msg)
 
             return "False"
