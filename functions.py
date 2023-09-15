@@ -110,7 +110,7 @@ def teammate_data(username):
                 print("ValueError")
 
 
-def total_team_data():
+def Etotal_team_data():
     return_list = []
 
     total_team_number = database.last_line_finder(team_names_file) + 1
